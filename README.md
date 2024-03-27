@@ -1,1 +1,0 @@
-# smartCart_virtualGroceryStore

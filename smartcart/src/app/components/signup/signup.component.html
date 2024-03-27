@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Sign Up</h2>
+    <form (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="txtName">Name:</label>
+            <input type="text" id="txtName" name="txtName" required>
+        </div>
+        <div class="form-group">
+            <label for="emlEmail">Email:</label>
+            <input type="email" id="emlEmail" name="emlEmail" required>
+        </div>
+        <div class="form-group">
+            <label for="txtAreaAddress">Address:</label>
+            <textarea id="txtAreaAddress" name="txtAreaAddress" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="pswPassword">Password:</label>
+            <input type="password" id="pswPassword" name="pswPassword" required>
+        </div>
+        <button type="submit">Sign Up</button>
+        <!-- <button routerLink='home'>Back to Home</button> -->
+    </form>
+</div>
+
