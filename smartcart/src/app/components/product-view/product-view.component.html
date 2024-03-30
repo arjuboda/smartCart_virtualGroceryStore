@@ -1,1 +1,24 @@
-<p>product-view works!</p>
+<div class="container">
+    <div class="product">
+        <div *ngIf="product" class="product-details">
+            <h2>{{ product.name }}</h2>
+            <img [src]="product.imageUrl" alt="{{ product.name }}">
+            <p>{{ product.description }}</p>
+            <p class="price">$ {{ product.price }}</p>
+            <div class="features">
+                <h3>Features:</h3>
+                <ul>
+                    <li *ngFor="let feature of product.features">{{ feature }}</li>
+                </ul>
+            </div>
+            <div class="buttons">
+                <button (click)="addToCart(product)">Add to Cart</button>
+                <button (click)="addToWishlist(product)">Add to Wishlist</button>
+            </div>
+            <button (click)="goBack()" class="btnBack">Back</button>
+        </div>
+        <div *ngIf="!product" class="loading">
+            <p>Loading...</p>
+        </div>
+    </div>
+</div>

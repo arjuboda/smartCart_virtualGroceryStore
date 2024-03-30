@@ -7,16 +7,16 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'smartcart';
-  navs = [
-    {
-      name: 'Login',
-      path: 'login'
-    },
-    {
-      name: 'Home',
-      path: 'home'
-    },
-  ];
-  constructor(private router: Router) { }
+  // navs = [
+  //   {
+  //     name: 'Login',
+  //     path: 'login'
+  //   },
+  //   {
+  //     name: 'Home',
+  //     path: 'home'
+  //   },
+  // ];
+  // constructor(private router: Router) { }
 }
 ;

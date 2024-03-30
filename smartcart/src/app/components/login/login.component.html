@@ -1,14 +1,31 @@
 <div class="container">
     <h2>Login Form</h2>
-    <form action="#" method="post">
+    <form action="#" method="post" (ngSubmit)="submitForm()" [formGroup]="userContentFormGroup">
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <label for="emlEmail">Email:</label>
+            <input type="email" id="emlEmail" formControlName="email" placeholder="Enter your email" required>
+            <div *ngIf="userContentFormGroup.get('email')?.invalid && (userContentFormGroup.get('email')?.touched || isSubmitted)">
+                <span *ngIf="userContentFormGroup.get('email')?.hasError('required')">
+                    its required field!
+                </span>
+                <span *ngIf="userContentFormGroup.get('email')?.hasError('email')">
+                    Please enter a valid email address.
+                </span>
+            </div>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <input type="password" id="password" formControlName="password" placeholder="Enter your password" required>
+            <div *ngIf="userContentFormGroup.get('password')?.invalid && (userContentFormGroup.get('password')?.touched || isSubmitted)">
+                <span *ngIf="userContentFormGroup.get('password')?.hasError('required')">
+                    its required field!
+                </span>
+                <span *ngIf="userContentFormGroup.get('password')?.hasError('minlength')">
+                    min 6 characters required!
+                </span>
+            </div>
         </div>
         <button type="submit" class="btn">Login</button>
+        <p>Don't have an account? <a routerLink="/signup">SignUp</a></p> 
     </form>
 </div>

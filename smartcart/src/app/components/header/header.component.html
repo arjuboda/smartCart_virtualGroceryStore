@@ -1,0 +1,26 @@
+<div class="divHeader">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+    <h1 ><a routerLink="">SmartCart</a></h1>
+  
+    <ul>
+      <li>
+        <!-- <a routerLink="home">Home</a> -->
+        <a routerLink="login" *ngIf="!isLoggedIn()">Login</a>
+        <a routerLink="signup" *ngIf="!isLoggedIn()">Sign Up</a>
+        <a href="#" (click)="logoutClicked($event)" *ngIf="isLoggedIn()">Logout</a>
+        <a routerLink="wishlist"><i class="fas fa-heart"></i></a>
+        <a routerLink="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <a routerLink="profile"><i class="fas fa-user"></i> </a>
+      </li>
+    </ul>
+</div>
+
+<!-- Logout confirmation popup -->
+<div class="modal" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-content">
+      <p>Are you sure you want to logout?</p>
+      <button (click)="logout()">Yes</button>
+      <button (click)="cancelLogout()">No</button>
+    </div>
+</div>

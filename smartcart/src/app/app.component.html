@@ -1,24 +1,24 @@
-<div class="divHeader">
-  <h1>online grocery store </h1>
-  <!-- <nav>
-    <ul>
-      <li *ngFor="let nav for navs">
-        <a [routerLink]="nav.path">{{ nav.name }}</a>
-      </li>
-    </ul>
-  </nav> -->
+<!-- <div class="divHeader">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <h1 ><a routerLink="">SmartCart</a></h1>
+
   <ul>
     <li>
-      <a routerLink="home">Home</a>
+     <a routerLink="home">Home</a> 
       <a routerLink="login">Login</a>
+      <a routerLink="logout">Logout</a>
       <a routerLink="signup">Sign Up</a>
-      
+      <a routerLink="wishlist"><i class="fas fa-heart"></i></a>
+      <a routerLink="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+      <a routerLink="profile"><i class="fas fa-user"></i> </a>
     </li>
   </ul>
-</div>
+</div> -->
+<app-header></app-header>
 <router-outlet></router-outlet>
-
-<h4>All right reserve</h4>
+<app-footer></app-footer>
+<!-- <h4>All right reserve</h4> -->
 
 
 <!--

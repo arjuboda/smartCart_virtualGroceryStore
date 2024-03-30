@@ -5,13 +5,18 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
+    component: HomeComponent
   },
   {
     path: 'home',
@@ -20,6 +25,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent
   },
   {
     path: 'signup',
@@ -32,7 +41,24 @@ const routes: Routes = [
   {
     path: 'product-view',
     component: ProductViewComponent
-  }, {
+  },
+  {
+    path: 'product-view/:id',
+    component: ProductViewComponent
+  },
+  {
+    path: 'wishlist',
+    component: WishlistComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
@@ -40,7 +66,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), ReactiveFormsModule, FormsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

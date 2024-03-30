@@ -1,0 +1,57 @@
+.profile-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.profile-info {
+    margin-top: 20px;
+}
+
+.info-item {
+    margin-bottom: 10px;
+}
+
+.info-item label {
+    font-weight: bold;
+}
+
+.info-item input[type='email'],
+.info-item input[type='text'],
+.info-item input[type='tel'] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.info-item input[type='email']:focus,
+.info-item input[type='text']:focus,
+.info-item input[type='tel']:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.edit-profile-btn {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.edit-btn,
+.save-btn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn:hover,
+.save-btn:hover {
+    background-color: #0056b3;
+}

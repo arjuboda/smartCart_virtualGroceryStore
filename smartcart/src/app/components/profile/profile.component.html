@@ -1,0 +1,31 @@
+<div class="profile-container">
+    <h2>User Profile</h2>
+    <div class="profile-info">
+      <div class="info-item">
+        <label>Name:</label>
+        <span>{{ user.name }}</span>
+      </div>
+      <div class="info-item">
+        <label>Email:</label>
+        <span *ngIf="!editMode">{{ user.email }}</span>
+        <input *ngIf="editMode" type="email" [(ngModel)]="user.email" placeholder="Enter email">
+      </div>
+      <div class="info-item">
+        <label>Address:</label>
+        <span *ngIf="!editMode">{{ user.address }}</span>
+        <input *ngIf="editMode" type="text" [(ngModel)]="user.address" placeholder="Enter address">
+      </div>
+      <div class="info-item">
+        <label>Phone:</label>
+        <span *ngIf="!editMode">{{ user.phone }}</span>
+        <input *ngIf="editMode" type="tel" [(ngModel)]="user.phone" placeholder="Enter phone">
+      </div>
+      <div *ngIf="editMode" class="info-item">
+        <button class="save-btn" (click)="saveChanges()">Save Changes</button>
+      </div>
+    </div>
+    <div class="edit-profile-btn">
+      <button class="edit-btn" (click)="toggleEditMode()">{{ editMode ? 'Cancel' : 'Edit Profile' }}</button>
+    </div>
+  </div>
+  
