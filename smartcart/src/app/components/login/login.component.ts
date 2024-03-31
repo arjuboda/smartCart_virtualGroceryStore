@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
 
           localStorage.setItem('token', JSON.stringify(res.jwt));
           localStorage.setItem('currentUser', JSON.stringify(res));
+          localStorage.setItem('user_id', JSON.stringify(res.user.id));
           // Handle successful login (e.g., store token, redirect to home page)
           this.router.navigate(['/home']);  // Example of redirecting
         },

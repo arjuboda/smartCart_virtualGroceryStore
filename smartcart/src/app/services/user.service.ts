@@ -25,8 +25,8 @@ export class UserService {
   updateUser(user: User): any {
     const userId = user.id; // Extract user ID from the User object
     const url = `${this.updateUserDetails}/${userId}`; // Construct the full URL with user ID
-    console.log('finle url', url);
-    console.log('data will pass as body', user);
+    // console.log('finle url', url);
+    // console.log('data will pass as body', user);
     return this.httpClient.put(url, user, { headers: this.headers });
   }
 }

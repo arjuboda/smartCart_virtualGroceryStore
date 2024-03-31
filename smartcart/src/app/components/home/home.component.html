@@ -4,20 +4,30 @@
       <div *ngFor="let product of products" class="product">
         <div class="product-item">
           <img [src]="product.imageUrl" alt="{{ product.name }}">
-          <h3>{{ product.name }}</h3>
-          <!-- <p>{{ product.description }}</p> -->
-          <p class="price">$ {{ product.price }}</p>
+          <h3>{{ product.attributes.product_name }}</h3>
+          <p>{{ product.attributes.category.data.attributes.category_name }}</p>
+          <p class="price">$ {{ product.attributes.price }}</p>
           <div class="buttons">
-            <!-- <button (click)="addToCart(product)">Add to Cart</button>
-            <button (click)="addToWishlist(product)">Add to Wishlist</button><br/> -->
-            <button (click)="viewProduct(product.id)" id='btnviewProduct'>View Product</button>
+             <button (click)="viewProduct(product.id)" id='btnviewProduct'>View Product</button> 
 
           </div>
-          <!-- <div class="features">
-            <span *ngFor="let feature of product.features">{{ feature }}</span>
-          </div> -->
         </div>
       </div>
     </div>
   </div>
   
+
+   <!-- <div class="mt-10">
+    <h2 class="text-green-600 font-bold text-2xl ml-5">Our Products</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 m-10">
+      <div *ngFor="let product of products" class="p-2 md:p-3 flex flex-col items-center justify-center gap-3 border rounded-lg hover:scale-110 hover:shadow-md transition-all ease-in-out">
+         
+        <img [src]="'assets/images/' + product.attributes.product_name.toLowerCase() + '.jpg'" alt="{{ product.attributes.product_name }}" class="h-[200px] w-[200px] object-contain">
+        <h2 class="font-bold text-lg">{{ product.attributes.product_name }}</h2>
+        <p> <b>Category: </b> {{ product.attributes.category.data.attributes.category_name }}</p>
+  
+        <h2 class="font-bold">&#8377;{{ product.attributes.price }}</h2>
+        <button class="p-2 border rounded-lg outline-gray-300 text-custom-green hover:text-white hover:bg-custom-green" (click)="viewProduct(product.id)">View Product</button>
+      </div>
+    </div>
+  </div> -->

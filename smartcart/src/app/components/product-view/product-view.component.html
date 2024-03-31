@@ -2,18 +2,15 @@
     <div class="product">
         <div *ngIf="product" class="product-details">
             <h2>{{ product.name }}</h2>
-            <img [src]="product.imageUrl" alt="{{ product.name }}">
-            <p>{{ product.description }}</p>
+            <img [src]="product.imageUrl" alt="{{ product.product_name }}">
+            <p>{{ product.product_description }}</p>
             <p class="price">$ {{ product.price }}</p>
-            <div class="features">
-                <h3>Features:</h3>
-                <ul>
-                    <li *ngFor="let feature of product.features">{{ feature }}</li>
-                </ul>
-            </div>
+            <span class="text-gray-900 font-semibold">Quantity:</span>
+            <input type="number" [(ngModel)]="quantity" value="1" min="1">
+        
             <div class="buttons">
-                <button (click)="addToCart(product)">Add to Cart</button>
-                <button (click)="addToWishlist(product)">Add to Wishlist</button>
+                <button (click)="addToCart(quantity)">Add to Cart</button>
+                <button (click)="addToWishlist()">Add to Wishlist</button>
             </div>
             <button (click)="goBack()" class="btnBack">Back</button>
         </div>
@@ -22,3 +19,31 @@
         </div>
     </div>
 </div>
+
+<!-- <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-5">
+    <div class="md:flex">
+      <div class="md:flex-shrink-0">
+        <img class="h-48 w-full object-cover md:h-full md:w-48" [src]="product.product_image?.url" [alt]="product.product_name">
+      </div>
+      <div class="p-8">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Product Name</div>
+        <h2 class="text-gray-900 text-2xl font-semibold">{{ product.product_name }}</h2>
+        <p class="mt-2 text-gray-600">{{ product.product_description }}</p>
+        <div class="mt-4 flex items-center justify-between">
+          <div class="flex items-center">
+            <span class="text-gray-900 font-semibold">Price:</span>
+            <span class="ml-2 text-gray-700">{{ product.price }}</span>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <span class="text-gray-900 font-semibold">Quantity:</span>
+          <input type="number" class="ml-2 w-16 border border-gray-300 rounded-md py-1 px-2 focus:outline-none" [(ngModel)]="quantity" value="1" min="1">
+        </div>
+        <div class="mt-8">
+          <button class="bg-green-500 text-white px-4 py-2 rounded-md mr-4" (click)="addToCart(quantity)"><i class="fa-solid fa-cart-shopping"></i></button>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded-md mr-4" (click)="addToWishlist()"><i class="fa-regular fa-heart"></i></button>
+          <button class="bg-gray-500 text-white px-4 py-2 rounded-md" (click)="goBack()">Back</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
