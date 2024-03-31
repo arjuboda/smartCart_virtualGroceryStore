@@ -5,13 +5,12 @@
   
     <ul>
       <li>
-        <!-- <a routerLink="home">Home</a> -->
         <a routerLink="login" *ngIf="!isLoggedIn()">Login</a>
         <a routerLink="signup" *ngIf="!isLoggedIn()">Sign Up</a>
         <a href="#" (click)="logoutClicked($event)" *ngIf="isLoggedIn()">Logout</a>
-        <a routerLink="wishlist"><i class="fas fa-heart"></i></a>
-        <a routerLink="cart"><i class="fas fa-shopping-cart"></i> Cart</a>
-        <a routerLink="profile"><i class="fas fa-user"></i> </a>
+        <a routerLink="wishlist" *ngIf="isLoggedIn()"><i class="fas fa-heart"></i></a>
+        <a routerLink="cart" *ngIf="isLoggedIn()"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <a routerLink="profile" *ngIf="isLoggedIn()"><i class="fas fa-user"></i> </a>
       </li>
     </ul>
 </div>

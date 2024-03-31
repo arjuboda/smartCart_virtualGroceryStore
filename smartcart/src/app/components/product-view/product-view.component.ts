@@ -34,10 +34,10 @@ export class ProductViewComponent implements OnInit {
 
   addToCart(product: any) {
     // Check if current user data is present
-    if (this.currentUser) {
+    if (this.currentUser && this.currentUser.jwt) {
       console.log('Product added to cart:', product);
       // Add user ID to product data
-      product.userId = this.currentUser.id;
+      product.jwt = this.currentUser.jwt;
       const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
       cartItems.push(product);
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -52,11 +52,12 @@ export class ProductViewComponent implements OnInit {
 
   addToWishlist(product: any) {
     // Check if current user data is present
-    if (this.currentUser && this.currentUser.email) {
+    if (this.currentUser && this.currentUser.jwt) {
       console.log('Product added to wishlist:', product);
       // Add user ID to product data
-      product.userId = this.currentUser.id;
+      product.jwt = this.currentUser.jwt;
       const wishlistItems = JSON.parse(localStorage.getItem('wishlistItems') || '[]');
+      // console.log(product);
       wishlistItems.push(product);
       localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
     }

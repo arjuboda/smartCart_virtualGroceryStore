@@ -21,6 +21,7 @@
 
 .info-item input[type='email'],
 .info-item input[type='text'],
+.info-item input[type='number'],
 .info-item input[type='tel'] {
     width: 100%;
     padding: 8px;
@@ -31,6 +32,7 @@
 
 .info-item input[type='email']:focus,
 .info-item input[type='text']:focus,
+.info-item input[type='number']:focus,
 .info-item input[type='tel']:focus {
     outline: none;
     border-color: #007bff;

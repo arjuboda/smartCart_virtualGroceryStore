@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
     // Retrieve current user data from local storage
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
 
-    if (!this.currentUser || !this.currentUser.email) {
+    if (!this.currentUser || !this.currentUser.jwt) {
       // If the user is not available, show an alert and redirect to the login page
       alert('You are not logged in. Please login to view your cart.');
       this.router.navigate(['/login']);
@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
       if (storedCartItems) {
         this.cartItems = JSON.parse(storedCartItems);
         // Filter cart items based on current user's ID
-        this.cartItems = this.cartItems.filter(item => item.userId === this.currentUser.id);
+        this.cartItems = this.cartItems.filter(item => item.jwt === this.currentUser.jwt);
       }
 
     }

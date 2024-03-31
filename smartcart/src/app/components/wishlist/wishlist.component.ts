@@ -17,7 +17,7 @@ export class WishlistComponent {
     // Retrieve current user data from local storage
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     console.log(this.currentUser);
-    if (!this.currentUser || !this.currentUser.email) {
+    if (!this.currentUser || !this.currentUser.jwt) {
       // If the user is not available, show an alert and redirect to the login page
       alert('You are not logged in. Please login to view your wishlist.');
       this.router.navigate(['/login']);
@@ -28,7 +28,7 @@ export class WishlistComponent {
       if (storedWishlistItems) {
         this.wishlistItems = JSON.parse(storedWishlistItems);
         // Filter wishlist items based on current user's ID
-        this.wishlistItems = this.wishlistItems.filter(item => item.userId === this.currentUser.id);
+        this.wishlistItems = this.wishlistItems.filter(item => item.jwt === this.currentUser.jwt);
       }
     }
 

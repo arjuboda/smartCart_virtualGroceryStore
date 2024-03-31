@@ -29,46 +29,20 @@ export class SignupComponent implements OnInit {
     return this.userContentFormGroup.controls;
   }
 
-  onSubmit() {
-    this.isSubmitted = true;
-
-    // If form is invalid, do not proceed
-    if (this.userContentFormGroup.invalid) {
-      return;
-    }
-
-    // Form is valid, proceed with submission
-    console.log('Form submitted successfully!', this.userContentFormGroup.value);
-  }
   submitForm() {
-    // this.userContentFormGroup.markAllAsTouched();
 
-    // if (this.userContentFormGroup.invalid || !this.userContentFormGroup.touched) {
-    //   return;
-    // }
-    // // Generate unique customer ID
-    // const customerId = this.generateCustomerId();
-
-    // // Retrieve users from local storage
-    // const users = JSON.parse(localStorage.getItem('users') || '[]');
-
-    // // Add customer ID to user details
-    // const userData = {
-    //   id: customerId,
-    //   ...this.userContentFormGroup.value
-    // };
-
-    // users.push(userData);
-    // localStorage.setItem('users', JSON.stringify(users));
-    // this.router.navigate(['/login']);
-
+    console.log(this.userContentFormGroup.value)
 
     if (this.userContentFormGroup.valid) {
+      // Generate unique customer ID
+      const customerId = this.generateCustomerId();
       const cred = {
+        'customer_id': customerId,
         'username': this.userContentFormGroup.value.name,
         'email': this.userContentFormGroup.value.email,
         'password': this.userContentFormGroup.value.password
       }
+      console.log(cred);
       this.authService.register(cred).subscribe({
         next: (res: any) => {
           console.log(res)
@@ -95,3 +69,39 @@ export class SignupComponent implements OnInit {
   }
 
 }
+
+
+
+// submitform(){
+// this.userContentFormGroup.markAllAsTouched();
+
+// if (this.userContentFormGroup.invalid || !this.userContentFormGroup.touched) {
+//   return;
+// }
+
+// // Retrieve users from local storage
+// const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+// // Add customer ID to user details
+// const userData = {
+//   id: customerId,
+//   ...this.userContentFormGroup.value
+// };
+
+// users.push(userData);
+// localStorage.setItem('users', JSON.stringify(users));
+// this.router.navigate(['/login']);
+// }
+
+
+// onSubmit() {
+//   this.isSubmitted = true;
+
+//   // If form is invalid, do not proceed
+//   if (this.userContentFormGroup.invalid) {
+//     return;
+//   }
+
+//   // Form is valid, proceed with submission
+//   console.log('Form submitted successfully!', this.userContentFormGroup.value);
+// }

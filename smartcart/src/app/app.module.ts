@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -16,8 +16,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HttpClient } from '@angular/common/http';
-
+// import { InterceptorInterceptor } from './services/interceptor/interceptor.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,9 +38,16 @@ import { HttpClient } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClient
+    // HttpClient,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: InterceptorInterceptor,
+    //   multi: true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
