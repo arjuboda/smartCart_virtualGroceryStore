@@ -1,42 +1,4 @@
-<!-- <div class="cart-container" *ngIf="cartItems.length > 0; else emptyCart">
-    <div *ngFor="let item of cartItems; let i = index" class="cart-item">
-      <div class="product-info">
-        <img [src]="item.imageUrl" alt="{{ item.name }}" class="product-image">
-        <div class="details">
-          <h3>{{ item.name }}</h3>
-          <p>{{ item.description }}</p>
-          
-        </div>
-      </div>
-      <div class="product-price">
-        <p>Price: {{ item.price }}</p>
-        <button (click)="removeItem(i)">Remove</button>
-      </div>
-    </div>
-    
-    <div class="cart-container" *ngIf="cartItems.length > 0; else emptyCart">
-      <div class="delivery-info">
-        <p>Estimated Delivery: 2-3 business days</p>
-        <p>Delivery Cost: Free for orders above $50</p>
-      </div>
-    
-      <button class="proceed-to-checkout">Proceed to Checkout</button>
-    </div>
-  </div>
 
-  
-  <ng-template #emptyCart>
-    <div class="emtyCartContainer">
-      <img src="../assets/emptyCart.png">
-      <p class="empty-cart-message">Your cart is empty</p>
-      
-      <button [routerLink]="['/home']" class="btnStartShopping">Start Shopping</button>
-    </div>
-  </ng-template>
-   -->
-
-
-  
 <div class="cart-container" *ngIf="cartItems.length > 0; else emptyCart">
   <div *ngFor="let item of cartItems; let i = index" class="cart-item">
       <div class="product-info">
