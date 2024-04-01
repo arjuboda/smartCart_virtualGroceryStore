@@ -1,42 +1,55 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
+
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
+
+
 export class CartComponent implements OnInit {
   cartItems: any[] = [];
-  currentUser: any;
 
-  constructor(private router: Router) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    // Retrieve current user data from local storage
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-
-    if (!this.currentUser || !this.currentUser.jwt) {
-      // If the user is not available, show an alert and redirect to the login page
-      alert('You are not logged in. Please login to view your cart.');
-      this.router.navigate(['/login']);
+    const token = localStorage.getItem('token')?.replace(/"/g, ''); // Use optional chaining
+    if (token) {
+      this.cartService.setAuthorizationHeader(token);
     } else {
-      // Retrieve cart items from local storage
-      const storedCartItems = localStorage.getItem('cartItems');
-
-      if (storedCartItems) {
-        this.cartItems = JSON.parse(storedCartItems);
-        // Filter cart items based on current user's ID
-        this.cartItems = this.cartItems.filter(item => item.jwt === this.currentUser.jwt);
-      }
-
+      console.error('No token found in local storage');
+      // Handle the case where no token is available (e.g., redirect to login)
     }
+    this.getWishlistProducts();
   }
 
-  // Example method to remove an item from the cart
+  getWishlistProducts() {
+    this.cartService.getCart_data().subscribe({
+      next: (res: any) => {
+        this.cartItems = res.data;
+        console.log(this.cartItems);
+      },
+      error: (err: any) => {
+        console.error('Error fetching user details:', err);
+      }
+    });
+  }
+
   removeItem(index: number): void {
+    const cartId = this.cartItems[index].id;
     this.cartItems.splice(index, 1);
-    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+    this.cartService.remove_cart_data(cartId).subscribe({
+      next: (res: any) => {
+        alert('Item removed from Cart!')
+      },
+      error: (err: any) => {
+        console.error('Error fetching user details:', err);
+
+      }
+    });
   }
 }

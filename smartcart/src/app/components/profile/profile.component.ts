@@ -152,7 +152,6 @@ export class ProfileComponent implements OnInit {
       },
       error: (err: any) => {
         console.error('Error updating user:', err);
-        // Handle error gracefully (e.g., display error message)
       }
     });
   }

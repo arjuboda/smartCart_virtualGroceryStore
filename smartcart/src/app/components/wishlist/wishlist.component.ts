@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { WishlistService } from 'src/app/services/wishlist.service';
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
@@ -9,36 +9,43 @@ import { Router } from '@angular/router';
 export class WishlistComponent {
 
   wishlistItems: any[] = [];
-  currentUser: any; // Variable to store current user data
-
-  constructor(private router: Router) { }
+  constructor(private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
-    // Retrieve current user data from local storage
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    console.log(this.currentUser);
-    if (!this.currentUser || !this.currentUser.jwt) {
-      // If the user is not available, show an alert and redirect to the login page
-      alert('You are not logged in. Please login to view your wishlist.');
-      this.router.navigate(['/login']);
+    const token = localStorage.getItem('token')?.replace(/"/g, ''); // Use optional chaining
+    if (token) {
+      this.wishlistService.setAuthorizationHeader(token);
     } else {
-
-      // Retrieve wishlist items from local storage
-      const storedWishlistItems = localStorage.getItem('wishlistItems');
-      if (storedWishlistItems) {
-        this.wishlistItems = JSON.parse(storedWishlistItems);
-        // Filter wishlist items based on current user's ID
-        this.wishlistItems = this.wishlistItems.filter(item => item.jwt === this.currentUser.jwt);
-      }
+      console.error('No token found in local storage');
+      // Handle the case where no token is available (e.g., redirect to login)
     }
-
+    this.getWishlistProducts();
   }
-  // Example method to remove an item from the wishlist
+
+  getWishlistProducts() {
+    this.wishlistService.getWishlist_data().subscribe({
+      next: (res: any) => {
+        this.wishlistItems = res.data;
+        console.log(this.wishlistItems);
+      },
+      error: (err: any) => {
+        console.error('Error fetching user details:', err);
+      }
+    });
+  }
+
   removeItem(index: number): void {
+    const wishlistId = this.wishlistItems[index].id;
     this.wishlistItems.splice(index, 1);
-    localStorage.setItem('wishlistItems', JSON.stringify(this.wishlistItems));
+    this.wishlistService.remove_wishlist_data(wishlistId).subscribe({
+      next: (res: any) => {
+        alert('Item removed from wishlist!')
+      },
+      error: (err: any) => {
+        console.error('Error fetching user details:', err);
+
+      }
+    });
   }
 }
-
-
 

@@ -1,32 +1,27 @@
-<div class="wishlist-container" *ngIf="wishlistItems.length > 0; else emptyCart">
-    <div *ngFor="let item of wishlistItems; let i = index" class="wishlist-item">
+
+<div class="wishlist-container" *ngIf="wishlistItems.length > 0; else emptyWishList">
+  <div *ngFor="let item of wishlistItems; let i = index" class="wishlist-item">
       <div class="product-info">
-        <img [src]="item.imageUrl" alt="{{ item.name }}" class="product-image">
-        <div class="details">
-          <h3>{{ item.name }}</h3>
-          <p>{{ item.description }}</p>
-          
-        </div>
+          <!-- <img [src]="item.product.data.attributes.imageUrl" alt="{{ item.product.data.attributes.name }}" class="product-image"> -->
+          <div class="details">
+              <h3>{{ item.attributes.product.data.attributes.product_name }}</h3>
+              <p>{{ item.attributes.product.data.attributes.product_description }}</p>
+          </div>
       </div>
       <div class="product-price">
-        <p>Price: {{ item.price }}</p>
-        <button (click)="removeItem(i)">Remove</button>
+          <p>Price: {{ item.attributes.product.data.attributes.price }}</p>
+          <button (click)="removeItem(i)">Remove</button>
       </div>
-    </div>
-    
-    <button [routerLink]="['/home']" class="btnStartShopping">Back To Home</button>
+  </div>
+  <button [routerLink]="['/home']" class="btnStartShopping">Back To Home</button>
 </div>
 
-<ng-template #emptyCart>
-    <div class="emtyWishlistContainer">
-        <img src="../assets/empty-wishlist.png">
-        <p class="empty-wishlist-message">Your wishlist is empty</p>
-        <p class="btnClickMsg">Your favourite items are just one click away!</p>
-         <button [routerLink]="['/home']" class="btnStartShopping">Start Shopping</button> 
-    </div>
+<ng-template #emptyWishList>
+  <div class="emtyWishlistContainer">
+      <img src="../assets/empty-wishlist.png">
+      <p class="empty-wishlist-message">Your wishlist is empty</p>
+      <p class="btnClickMsg">Your favourite items are just one click away!</p>
+      <button [routerLink]="['/home']" class="btnStartShopping">Start Shopping</button>
+  </div>
 </ng-template>
-
-<!-- <div *ngIf="showMessage">
-  <p>You have not logged in yet. Redirecting to login page...</p>
-</div> -->
 
