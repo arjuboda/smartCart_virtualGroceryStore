@@ -18,7 +18,9 @@ export class LogoutComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    // localStorage.removeItem('user_id');
+    // localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
     this.showModal = false;
   }
 

@@ -28,6 +28,8 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('token');
     this.showModal = false;
     this.router.navigate(['']); // Redirect to home page after logout
   }

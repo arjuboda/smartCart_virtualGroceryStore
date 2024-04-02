@@ -49,17 +49,9 @@
         <label>Mobile Number:</label>
         <span *ngIf="user.mobile_number">{{ user.mobile_number }}</span>
         <span *ngIf="!user.mobile_number">Not Provided</span>
-        <input *ngIf="editMode" type="number" [(ngModel)]="user.mobile_number">
+        <input *ngIf="editMode" type="text" [(ngModel)]="user.mobile_number">
       </div>
-      <!-- <div *ngIf="user.user_addresses.length > 0">
-        <h3>Addresses</h3>
-        <ul class="address-list">
-          <li *ngFor="let address of user.user_addresses">
-            <span>{{ address.street }}</span> ({{ address.city }})
-            <input *ngIf="editMode" type="text" [(ngModel)]="user.address.street" placeholder="Enter address"> 
-          </li>
-        </ul>
-      </div> -->
+     
       <div *ngIf="editMode" class="info-item">
         <button class="save-btn" (click)="saveChanges()">Save Changes</button>
       </div>

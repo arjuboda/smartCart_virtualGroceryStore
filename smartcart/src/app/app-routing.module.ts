@@ -10,6 +10,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CheckOutComponent } from './components/check-out/check-out.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent
+  },
+  {
+    path: 'checkout',
+    component: CheckOutComponent
   },
   {
     path: '**',

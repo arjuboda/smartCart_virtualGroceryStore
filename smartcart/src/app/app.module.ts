@@ -16,6 +16,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CheckOutComponent } from './components/check-out/check-out.component';
 // import { InterceptorInterceptor } from './services/interceptor/interceptor.interceptor';
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HeaderComponent } from './components/header/header.component';
     WishlistComponent,
     CartComponent,
     LogoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    CheckOutComponent
   ],
   imports: [
     BrowserModule,

@@ -46,8 +46,7 @@ export class LoginComponent implements OnInit {
         },
         error: (error) => {
           console.error('Login failed:', error);
-          // Handle login error (e.g., display error message)
-          // Implement appropriate error handling based on your API response
+          alert('Something went wrong\nplease check your id and password!')
           this.isSubmitted = true;  // Consider marking form as submitted for UI feedback
         }
       });

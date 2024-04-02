@@ -2,17 +2,19 @@
 <div class="cart-container" *ngIf="cartItems.length > 0; else emptyCart">
   <div *ngFor="let item of cartItems; let i = index" class="cart-item">
       <div class="product-info">
-          <!-- <img [src]="item.product.data.attributes.imageUrl" alt="{{ item.product.data.attributes.name }}" class="product-image"> -->
-          <div class="details">
+        <!-- <img [src]="'../assets/' + item.attributes.product_name + '.avif'" class="product-image"> -->
+        <div class="details">
               <h3>{{ item.attributes.product.data.attributes.product_name }}</h3>
               <p>{{ item.attributes.product.data.attributes.product_description }}</p>
+              <p class="details-quantity">Quantity: {{ item.attributes.quantity }}</p>
           </div>
       </div>
       <div class="product-price">
           <p>Price: {{ item.attributes.product.data.attributes.price }}</p>
-          <button (click)="removeItem(i)">Remove</button>
+          <button class="btnRemove" (click)="removeItem(i)">Remove</button>
       </div>
   </div>
+  <button [routerLink]="['/checkout']" class="btnCheckOut proceed-to-checkout">CHECK OUT</button>
   <button [routerLink]="['/home']" class="btnStartShopping">Back To Home</button>
 </div>
 

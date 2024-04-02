@@ -17,6 +17,7 @@ export class CartService {
       'Authorization': `Bearer ${token}` // Set Bearer token header
     });
   }
+
   addCart(cartProduct: any) {
     return this.httpClient.post(this.cartURL, cartProduct, { headers: this.headers });
   }

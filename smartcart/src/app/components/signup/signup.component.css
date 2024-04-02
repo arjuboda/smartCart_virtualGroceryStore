@@ -16,6 +16,10 @@
     font-weight: bold;
 }
 
+span {
+    color: red;
+}
+
 .form-group input,
 textarea {
     width: 100%;

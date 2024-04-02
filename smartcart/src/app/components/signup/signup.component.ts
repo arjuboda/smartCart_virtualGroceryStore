@@ -45,10 +45,12 @@ export class SignupComponent implements OnInit {
       console.log(cred);
       this.authService.register(cred).subscribe({
         next: (res: any) => {
-          console.log(res)
+          // console.log(res);
+          this.router.navigate(['/login']);
         },
         error: (err: any) => {
-          console.log(err)
+          console.log(err);
+          alert('This email already exists, please use other email!')
         }
       })
     } else {

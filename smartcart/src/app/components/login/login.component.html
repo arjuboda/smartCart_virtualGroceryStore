@@ -6,7 +6,7 @@
             <input type="email" id="emlEmail" formControlName="email" placeholder="Enter your email" required>
             <div *ngIf="userContentFormGroup.get('email')?.invalid && (userContentFormGroup.get('email')?.touched || isSubmitted)">
                 <span *ngIf="userContentFormGroup.get('email')?.hasError('required')">
-                    its required field!
+                    Its required field!
                 </span>
                 <span *ngIf="userContentFormGroup.get('email')?.hasError('email')">
                     Please enter a valid email address.
@@ -18,10 +18,10 @@
             <input type="password" id="password" formControlName="password" placeholder="Enter your password" required>
             <div *ngIf="userContentFormGroup.get('password')?.invalid && (userContentFormGroup.get('password')?.touched || isSubmitted)">
                 <span *ngIf="userContentFormGroup.get('password')?.hasError('required')">
-                    its required field!
+                    Its required field!
                 </span>
                 <span *ngIf="userContentFormGroup.get('password')?.hasError('minlength')">
-                    min 6 characters required!
+                    Minimum 6 characters required!
                 </span>
             </div>
         </div>

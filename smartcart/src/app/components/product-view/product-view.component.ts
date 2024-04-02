@@ -49,10 +49,10 @@ export class ProductViewComponent implements OnInit {
   }
 
   addToWishlist(): void {
-    const isAuthenticated = ('localStorage.getItem(user_id)') !== null;
+    const isAuthenticated = (localStorage.getItem('user_id')) !== null;
     if (!isAuthenticated) {
       alert('Please login first.');
-      return;
+      this.router.navigate(['/login']);
     }
 
     const wishlistItemPayload = {
@@ -78,7 +78,7 @@ export class ProductViewComponent implements OnInit {
     const isAuthenticated = localStorage.getItem('user_id') !== null;
     if (!isAuthenticated) {
       alert('Please login first.');
-      return;
+      this.router.navigate(['/login']);
     }
     // console.log(this.productId);
 

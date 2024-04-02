@@ -24,10 +24,10 @@ export class CartComponent implements OnInit {
       console.error('No token found in local storage');
       // Handle the case where no token is available (e.g., redirect to login)
     }
-    this.getWishlistProducts();
+    this.getCartProducts();
   }
 
-  getWishlistProducts() {
+  getCartProducts() {
     this.cartService.getCart_data().subscribe({
       next: (res: any) => {
         this.cartItems = res.data;
@@ -53,3 +53,12 @@ export class CartComponent implements OnInit {
     });
   }
 }
+
+
+
+
+
+
+
+
+
