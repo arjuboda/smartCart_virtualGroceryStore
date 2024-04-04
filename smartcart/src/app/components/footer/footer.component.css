@@ -1,15 +1,16 @@
 .footer {
-    background-color: #f8f9fa;
+    background-color: #17819a;
     padding: 30px 0;
+    color: #fff;
 }
 
 .footer h5 {
-    color: #333;
+    color: #ffffff;
     font-size: 18px;
 }
 
 .footer p {
-    color: #666;
+    color: #ffffff;
 }
 
 .row {
@@ -28,6 +29,7 @@
 .footer ul {
     list-style: none;
     padding: 0;
+    color: #fff;
 }
 
 .footer ul li {
@@ -38,11 +40,23 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    color: #fff;
+}
+
+i {
+    color: white;
+    padding: 5px;
+}
+
+i:hover {
+    border-radius: 50px;
+    background-color: #fff;
+    color: #17819a;
 }
 
 .social-icons li {
     display: inline-block;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 
 .social-icons li:last-child {
@@ -50,16 +64,13 @@
 }
 
 .social-icons a {
-    color: #666;
     font-size: 20px;
 }
 
-.social-icons a:hover {
-    color: #333;
-}
-
-i {
-    color: black;
+ul li a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
 }
 
 h5,

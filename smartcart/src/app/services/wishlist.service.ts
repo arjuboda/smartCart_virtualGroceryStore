@@ -20,7 +20,9 @@ export class WishlistService {
   }
 
   getWishlist_data() {
-    return this.httpClient.get(this.get_wishlistItems_Url, { headers: this.headers });
+    const userId = localStorage.getItem('user_id');
+    const url = `http://localhost:1337/api/wish-lists?populate=product&&filters[user_detail][id][$eq][0]=${userId}`
+    return this.httpClient.get(url, { headers: this.headers });
   }
   remove_wishlist_data(id: number) {
     const url = `${this.wishlistURL}/${id}`;

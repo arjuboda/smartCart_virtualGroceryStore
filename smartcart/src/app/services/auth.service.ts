@@ -10,6 +10,13 @@ export class AuthService {
   registerUrl: string = environment.baseUrl + environment.register;
 
   constructor(private http: HttpClient) { }
+  // aadded content
+  id: any = localStorage.getItem('user_id') || 0;
+
+  getUserId() {
+    return this.id;
+  }
+  //************ */
 
   login(credentials: any) {
     return this.http.post(

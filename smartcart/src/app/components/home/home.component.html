@@ -1,18 +1,21 @@
-<div class="container">
-  <h2>Products</h2>
-  <div class="products">
-    <div class="product-list">
-      <div *ngFor="let product of products" class="product">
-        <img [src]="'../assets/' + product.attributes.product_name + '.avif'" class="product-image">
-        <div class="product-details">
-          <h3>{{ product.attributes.product_name }}</h3>
-          <p>{{ product.attributes.category.data.attributes.category_name }}</p>
-          <div class="price-button">
-            <p class="price">$ {{ product.attributes.price }}</p>
-            <button (click)="viewProduct(product.id)" id='btnviewProduct'>View Product</button>
+<div class="maincontainer">
+  <div class="container">
+    <h2>Products</h2>
+    <div class="products">
+      <div class="product-list">
+        <div *ngFor="let product of products" class="product">
+          <img [src]="'../assets/' + product.attributes.product_name + '.avif'" class="product-image">
+          <div class="product-details">
+            <h3>{{ product.attributes.product_name }}</h3>
+            <p>{{ product.attributes.category.data.attributes.category_name }}</p>
+            <div class="price-button">
+              <p class="price">$ {{ product.attributes.price }}</p>
+              <button (click)="viewProduct(product.id)" id='btnviewProduct'>View Product</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>

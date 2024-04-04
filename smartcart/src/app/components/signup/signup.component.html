@@ -1,56 +1,59 @@
-<div class="container">
-    <h2>Sign Up</h2>
-    <form (ngSubmit)="submitForm()" [formGroup]="userContentFormGroup">
-        <div class="form-group">
-            <label for="txtName">Name:</label>
-            <input type="text" id="txtName" name="txtName" formControlName="name" required>
-            <div *ngIf="
-                userContentFormGroup.get('name')?.invalid && 
-                (userContentFormGroup.get('name')?.touched || isSubmitted)">
-                <span *ngIf="userContentFormGroup.get('name')?.hasError('required')">
-                    its required field!
-                </span>
-                <span *ngIf="userContentFormGroup.get('name')?.hasError('minlength')">
-                    min 3 characters required!
-                </span>
+<div class="maincontainer">
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form (ngSubmit)="submitForm()" [formGroup]="userContentFormGroup">
+            <div class="form-group">
+                <label for="txtName">Name:</label>
+                <input type="text" id="txtName" name="txtName" formControlName="name" required>
+                <div *ngIf="
+                    userContentFormGroup.get('name')?.invalid && 
+                    (userContentFormGroup.get('name')?.touched || isSubmitted)">
+                    <span *ngIf="userContentFormGroup.get('name')?.hasError('required')">
+                        its required field!
+                    </span>
+                    <span *ngIf="userContentFormGroup.get('name')?.hasError('minlength')">
+                        min 3 characters required!
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="emlEmail">Email:</label>
-            <input type="email" id="emlEmail" name="emlEmail" formControlName="email">
-            
-            <div *ngIf=
-                "userContentFormGroup.get('email')?.invalid && 
-                (userContentFormGroup.get('email')?.touched || isSubmitted)">
-                <span *ngIf="userContentFormGroup.get('email')?.hasError('required')">
-                    its required field!
-                </span>
-                <span *ngIf="userContentFormGroup.get('email')?.hasError('email')">
-                    Please enter a valid email address.
-                </span>
+            <div class="form-group">
+                <label for="emlEmail">Email:</label>
+                <input type="email" id="emlEmail" name="emlEmail" formControlName="email">
+                
+                <div *ngIf=
+                    "userContentFormGroup.get('email')?.invalid && 
+                    (userContentFormGroup.get('email')?.touched || isSubmitted)">
+                    <span *ngIf="userContentFormGroup.get('email')?.hasError('required')">
+                        its required field!
+                    </span>
+                    <span *ngIf="userContentFormGroup.get('email')?.hasError('email')">
+                        Please enter a valid email address.
+                    </span>
+                </div>
             </div>
-        </div>
-        <!-- <div class="form-group">
-            <label for="txtAreaAddress">Address:</label>
-            <textarea id="txtAreaAddress" name="txtAreaAddress" required></textarea>
-        </div> -->
-        <div class="form-group">
-            <label for="pswPassword">Password:</label>
-            <input type="password" id="pswPassword" name="pswPassword"  formControlName="password" required>
-
-            <div *ngIf="userContentFormGroup.get('password')?.invalid && (userContentFormGroup.get('password')?.touched || isSubmitted)">
-                <span *ngIf="userContentFormGroup.get('password')?.hasError('required')">
-                    its required field!
-                </span>
-                <span *ngIf="userContentFormGroup.get('password')?.hasError('minlength')">
-                    min 6 characters required!
-                </span>
+            <!-- <div class="form-group">
+                <label for="txtAreaAddress">Address:</label>
+                <textarea id="txtAreaAddress" name="txtAreaAddress" required></textarea>
+            </div> -->
+            <div class="form-group">
+                <label for="pswPassword">Password:</label>
+                <input type="password" id="pswPassword" name="pswPassword"  formControlName="password" required>
+    
+                <div *ngIf="userContentFormGroup.get('password')?.invalid && (userContentFormGroup.get('password')?.touched || isSubmitted)">
+                    <span *ngIf="userContentFormGroup.get('password')?.hasError('required')">
+                        its required field!
+                    </span>
+                    <span *ngIf="userContentFormGroup.get('password')?.hasError('minlength')">
+                        min 6 characters required!
+                    </span>
+                </div>
             </div>
-        </div>
-        <button type="submit">Sign Up</button>
-        <p>already user? <a routerLink="/login">Login</a></p> 
+            <button type="submit">Sign Up</button>
+            <p>already user? <a routerLink="/login">Login</a></p> 
+    
+            <!-- <button routerLink='home'>Back to Home</button> -->
+        </form>
+    </div>
 
-        <!-- <button routerLink='home'>Back to Home</button> -->
-    </form>
-</div>
 
+</div>    

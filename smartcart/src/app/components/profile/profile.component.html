@@ -1,44 +1,11 @@
-<!-- <div class="profile-container">
-    <h2>User Profile</h2>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+<div class="maincontainer">
+  <div class="profile-container">
+    <i class='fas fa-user-circle profile-icon' ></i>
     <div class="profile-info">
       <div class="info-item">
-        <label>Name:</label>
-        <span>{{ user.name }}</span>
-      </div>
-      <div class="info-item">
-        <label>Email:</label>
-        <span *ngIf="!editMode">{{ user.email }}</span>
-        <input *ngIf="editMode" type="email" [(ngModel)]="user.email" placeholder="Enter email">
-      </div>
-      <div class="info-item">
-        <label>Address:</label>
-        <span *ngIf="!editMode">{{ user.address }}</span>
-        <input *ngIf="editMode" type="text" [(ngModel)]="user.address" placeholder="Enter address">
-      </div>
-      <div class="info-item">
-        <label>Phone:</label>
-        <span *ngIf="!editMode">{{ user.phone }}</span>
-        <input *ngIf="editMode" type="tel" [(ngModel)]="user.phone" placeholder="Enter phone">
-      </div>
-      <div *ngIf="editMode" class="info-item">
-        <button class="save-btn" (click)="saveChanges()">Save Changes</button>
-      </div>
-    </div>
-    <div class="edit-profile-btn">
-      <button class="edit-btn" (click)="toggleEditMode()">{{ editMode ? 'Cancel' : 'Edit Profile' }}</button>
-    </div>
-  </div>
-   -->
-
-
-   <div class="profile-container">
-
-    <h2>User Profile</h2>
-  
-    <div class="profile-info">
-      <div class="info-item">
-        <label>Name:</label>
-        <span>{{ user.username }}</span>
+        <span class="user-name">{{ user.username }}</span>
       </div>
       <div class="info-item">
         <label>Email:</label>
@@ -51,7 +18,7 @@
         <span *ngIf="!user.mobile_number">Not Provided</span>
         <input *ngIf="editMode" type="text" [(ngModel)]="user.mobile_number">
       </div>
-     
+      
       <div *ngIf="editMode" class="info-item">
         <button class="save-btn" (click)="saveChanges()">Save Changes</button>
       </div>
@@ -60,6 +27,29 @@
     <div class="edit-profile-btn">
       <button class="edit-btn" (click)="toggleEditMode()">{{ editMode ? 'Cancel' : 'Edit Profile' }}</button>
     </div>
-  
+
+    <div class="order-hostory-container">
+      <div class="product-history-btn"></div>
+        <button (click)="getOrderHistory()" class="btnViewHistory">View History</button>
+      </div>
+      <div *ngIf="orders && orders.length > 0" class="order-history">
+        <h3>Order History</h3>
+        <ul >
+          <li *ngFor="let order of orders" class="ordered_items">
+            <div>Order ID: {{ order.order_id }}</div>
+            <div>Order Date: {{ order.order_date }}</div>
+            <div>Order Status: {{ order.order_status }}</div>
+            <!-- Display other order details as needed -->
+            <ul>
+              <li *ngFor="let item of order.order_items">
+                <div>Product: {{ item.product_name }}</div>
+                <div>Price: {{ item.price }}</div>
+                <div>Quantity: {{ item.quantity }}</div>
+                <!-- Display other item details as needed -->
+              </li>
+            </ul>
+          </li>
+        </ul>
+    </div>
   </div>
-  
+</div>

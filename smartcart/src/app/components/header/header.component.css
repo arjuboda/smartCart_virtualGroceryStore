@@ -11,7 +11,7 @@ body {
 }
 
 .divHeader {
-    background-color: #007bff;
+    background-color: #17819a;
     color: #fff;
     padding: 20px;
     display: flex;
@@ -61,7 +61,7 @@ body {
 .fa-user {
     /* border: 2px solid red; */
     padding: 10px;
-    color: #007bff;
+    color: #17819a;
     background-color: #f4f4f4;
     border-radius: 50px;
 }
@@ -85,6 +85,7 @@ body {
     border: 1px solid #888;
     width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
 }
 
 .modal-content p {
@@ -93,7 +94,7 @@ body {
 }
 
 .modal-content button {
-    background-color: #007bff;
+    background-color: #17819a;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -102,5 +103,5 @@ body {
 }
 
 .modal-content button:hover {
-    background-color: #0056b3;
+    background-color: #136779;
 }

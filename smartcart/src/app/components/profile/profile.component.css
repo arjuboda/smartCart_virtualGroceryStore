@@ -1,33 +1,72 @@
+.maincontainer {
+    display: flex;
+    justify-content: center;
+    background-color: #ace7f0;
+    flex-direction: column;
+    /* color: #136976; */
+}
+
 .profile-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
+    /* width: 60%; */
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 25px;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9c3;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: initial;
+    text-align: center;
+}
+
+i {
+    font-size: 80px;
+    color: #178191;
+    position: relative;
+    top: -52px;
+    margin-bottom: -100px;
+    background-color: #fff;
+    border-radius: 50%;
 }
 
 .profile-info {
-    margin-top: 20px;
+    margin-top: 0px;
+}
+
+.profile-info .user-name {
+    margin-top: -80px;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .info-item {
-    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    /* align-items: center; */
 }
 
 .info-item label {
     font-weight: bold;
+    /* color: #555; */
+}
+
+.info-item span {
+    display: inline-block;
+    padding: 5px 10px;
+    /* background-color: #f0f0f0; */
+    border-radius: 5px;
+    color: #333;
 }
 
 .info-item input[type='email'],
 .info-item input[type='text'],
 .info-item input[type='number'],
 .info-item input[type='tel'] {
-    width: 100%;
+    width: calc(100% - 5px);
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    display: block;
 }
 
 .info-item input[type='email']:focus,
@@ -35,7 +74,7 @@
 .info-item input[type='number']:focus,
 .info-item input[type='tel']:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #178191;
 }
 
 .edit-profile-btn {
@@ -45,15 +84,101 @@
 
 .edit-btn,
 .save-btn {
-    padding: 8px 16px;
-    background-color: #007bff;
+    padding: 10px 20px;
+    background-color: #178191;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+
 }
 
 .edit-btn:hover,
 .save-btn:hover {
-    background-color: #0056b3;
+    background-color: #136976;
+}
+
+.btnViewHistory {
+    margin-top: 20px;
+    color: #136976;
+    background-color: transparent;
+    border: 2px solid #136976;
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-weight: 500;
+    font-size: 13px;
+
+}
+
+.order-history {
+    text-align: left;
+    margin: 40px 5vh 0px 5vh;
+    padding: 50px;
+    /* background-colo#ffff; */
+    background-color: transparent;
+    /* border: 1px solid #ddd; */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-history h3 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.order-history ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ordered_items {
+    border-bottom: 1px solid #ccc;
+}
+
+.order-history li {
+    margin-bottom: 20px;
+    /* padding-bottom: 10px; */
+}
+
+.order-history li:last-child {
+    border-bottom: none;
+}
+
+.order-details {
+    margin-top: 10px;
+}
+
+.order-details div {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.order-details .product-name {
+    font-weight: bold;
+}
+
+.order-details .price {
+    font-style: italic;
+}
+
+.order-details .quantity {
+    font-weight: bold;
+}
+
+.order-history button {
+    background-color: #178191;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.order-history button:hover {
+    background-color: #136976;
+}
+
+ul li div {
+    margin-bottom: 7px;
 }

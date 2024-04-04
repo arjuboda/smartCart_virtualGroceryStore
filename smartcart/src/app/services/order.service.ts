@@ -7,10 +7,11 @@ import { environment } from 'src/environments/environment.development';
 })
 export class OrderService {
 
-
+  userId: any = localStorage.getItem('user_id');
   private headers = new HttpHeaders();
 
   orderUrl = environment.baseUrl + environment.order_url;
+  get_orderDetails_url = `http://localhost:1337/api/orders?filters[user_detail][id][$eq][0]=${this.userId}&&populate=user_detail`
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,4 +24,14 @@ export class OrderService {
   placeOrder(orderData: any) {
     return this.httpClient.post(this.orderUrl, orderData, { headers: this.headers });
   }
+
+  getOrderHistory() {
+    return this.httpClient.get(this.get_orderDetails_url, { headers: this.headers });
+  }
+
+  // getOrders(): any {
+  //   const url = `http://localhost:1337/api/orders?filters[user_detail][id][$eq][0]=${this.userId}`;
+
+  //   return this.httpClient.get<any>(url);
+  // }
 }

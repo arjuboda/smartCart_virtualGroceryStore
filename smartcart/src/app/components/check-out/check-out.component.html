@@ -1,40 +1,43 @@
-<div class="checkout-container">
-  <h2>Checkout</h2>
-  <div *ngFor="let item of cartItems" class="cart-item">
-    <div class="product-info">
-      <div class="details-and-price">
-        <h3>{{ item.attributes.product.data.attributes.product_name }}</h3>
-        <p>Quantity: {{ item.attributes.quantity }} x ₹{{ item.attributes.product.data.attributes.price }}</p>
+<div class="maincontainer">
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <div *ngFor="let item of cartItems" class="cart-item">
+      <div class="product-info">
+        <div class="details-and-price">
+          <h3>{{ item.attributes.product.data.attributes.product_name }}</h3>
+          <p>Quantity: {{ item.attributes.quantity }} x ₹{{ item.attributes.product.data.attributes.price }}</p>
+        </div>
       </div>
     </div>
+    <div class="bill-details">
+      <p class="item-total">Item total: ₹{{ totalPrice }}</p>
+      <p class="GST">GST ({{ GSTPercentage }}%): ₹{{ tax_amount }}</p>
+      <p class="grand-total final-price">Grand total: ₹{{ grandTotal }}</p>
+    </div>
+    <button class="place-order-btn" (click)="openModal()">Place Order</button>
   </div>
-  <div class="bill-details">
-    <p class="item-total">Item total: ₹{{ totalPrice }}</p>
-    <p class="GST">GST ({{ GSTPercentage }}%): ₹{{ totalPrice * (GSTPercentage / 100) }}</p>
-    <p class="grand-total final-price">Grand total: ₹{{ grandTotal }}</p>
-  </div>
-  <button class="place-order-btn" (click)="openModal()">Place Order</button>
-</div>
 
-<!-- Modal -->
 <div class="modal" [ngClass]="{'active': modalOpen}">
   <div class="modal-content">
-    <span class="close" (click)="closeModal()">&times;</span>
-    <h2>Customer Details</h2>
-    <form>
-      <div class="form-group">
-        <label for="customerName">Name:</label>
-        <input type="text" id="customerName" name="customerName" class="form-control" [(ngModel)]="customerName">
-      </div>
-      <div class="form-group">
-        <label for="mobileNumber">Mobile Number:</label>
-        <input type="text" id="mobileNumber" name="mobileNumber" class="form-control" [(ngModel)]="mobileNumber">
-      </div>
-      <div class="form-group">
-        <label for="shippingAddress">Shipping Address:</label>
-        <input type="text" id="shippingAddress" name="shippingAddress" class="form-control" [(ngModel)]="shippingAddress">
-      </div>
-      <button class="place-order-btn" (click)="placeOrder()">Confirm Order</button>
-    </form>
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Customer Details</h2>
+      <form>
+          <div class="form-row">
+              <div class="form-group">
+                  <label for="customerName">Name:</label>
+                  <input type="text" id="customerName" name="customerName" class="form-control" [(ngModel)]="customerName">
+              </div>
+              </div>
+              <div class="form-group">
+                  <label for="mobileNumber">Mobile Number:</label>
+                  <input type="text" id="mobileNumber" name="mobileNumber" class="form-control" [(ngModel)]="mobileNumber">
+              </div>
+              <div class="form-group">
+                  <label for="shippingAddress">Shipping Address:</label>
+                  <input type="text" id="shippingAddress" name="shippingAddress" class="form-control" [(ngModel)]="shippingAddress">
+              </div>
+          <!-- </div> -->
+          <button class="place-order-btn" (click)="placeOrder()">Confirm Order</button>
+      </form>
   </div>
 </div>

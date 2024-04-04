@@ -1,15 +1,33 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+.maincontainer {
+    margin: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 80vh;
+    background-image: url('src/assets/image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: initial;
+    display: flex;
+    align-items: center;
 }
 
 .container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 25%;
+    position: absolute;
+    right: 24%;
+    color: #0a5f72;
+    padding: 30px 40px;
+    background: #ffffff8d;
+    border-radius: 7px;
+    /* min-width: 200px; */
+    box-shadow: 0px 0px 7px #848383;
+    /* margin-left: 20px; */
+    /* height: 50vh; */
+}
+
+.container h2 {
+    margin: 15px auto;
+    /* text-align: center; */
 }
 
 .form-group {
@@ -18,10 +36,20 @@ body {
 
 .form-group label {
     display: block;
-    font-weight: bold;
+    font-weight: 600;
+    line-height: 1.5em;
+    font-size: 16px;
 }
 
 .form-group input {
+    /* width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #0e505f;
+    height: 40px;
+    font-size: 16px; */
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -29,20 +57,40 @@ body {
     box-sizing: border-box;
 }
 
+.form-group input:focus {
+    border: 1px solid #17819a;
+
+}
+
 .btn {
     display: inline-block;
-    background-color: #007bff;
+    background-color: #17819a;
     color: #fff;
-    padding: 10px 20px;
+    width: 40%;
+    margin: auto 30%;
     border: none;
+    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #136b7e;
 }
 
 span {
     color: red;
+}
+
+p a {
+    color: #0e505f;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+p a:hover {
+    color: red
 }

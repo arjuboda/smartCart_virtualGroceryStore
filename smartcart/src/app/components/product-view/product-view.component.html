@@ -1,22 +1,79 @@
-<div class="container">
+ <div class="container">
     <div class="product">
         <div *ngIf="product" class="product-details">
-            <h2>{{ product.name }}</h2>
-            <img [src]="product.imageUrl" alt="{{ product.product_name }}">
-            <p>{{ product.product_description }}</p>
-            <p class="price">$ {{ product.price }}</p>
-            <span class="text-gray-900 font-semibold">Quantity:</span>
-            <input type="number" [(ngModel)]="quantity" value="1" min="1">
-        
-            <div class="buttons">
-                <button (click)="addToCart(quantity)">Add to Cart</button>
-                <button (click)="addToWishlist()">Add to Wishlist</button>
+            <div class="left-column">
+                <div class="product-image-section">
+                    <img [src]="'../assets/' + product.product_name + '.avif'" class="product-image" alt="{{product.name}}">
+                </div>
+                <div class="static-info">
+                   <h3>Services</h3>
+                    <h4>Customer Care</h4>
+                    <p>We are here to assist you 24/7.</p>
+                    <h4>Return Policy</h4>
+                    <p>Your satisfaction is guaranteed. Easy returns.</p>
+                    <h4>Disclaimer</h4>
+                    <p>Terms and conditions apply. Please read carefully.</p>
+                </div>
             </div>
-            <button (click)="goBack()" class="btnBack">Back</button>
+            <div class="right-column">
+                <div class="product-details-section">
+                    <h2>{{ product.product_name }}</h2>
+                    <p>{{ product.product_description }}</p>
+                    <p class="price">$ {{ product.price }}</p>
+                    <div class="quantity-section">
+                        <span class="text-gray-900 font-semibold">Quantity:</span>
+                        <input type="number" [(ngModel)]="quantity" value="1" min="1">
+                    </div>
+                    <div class="buttons">
+                        <button (click)="addToCart(quantity)" class="btn-cart">Add to Cart</button>
+                        <button (click)="addToWishlist()" class="btn-wishlist">Add to Wishlist</button>
+                    </div>
+                </div>
+                <div class="why-choose-this">
+                    <h2>Benefits By Choosing SmartCart?</h2>
+                    <ul>
+                        <li>
+                            <div class="list-item">
+                                <div class="leftPart">
+                                    <img src="../assets/fastDelivery_icon.avif"  alt="delevery icon">
+                                </div>
+                                <div class="rigthPart">
+                                    <h3>Superfast Delivery</h3>
+                                    <p>Get your product delivered within 24 hours.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item">
+                                <div class="leftPart">
+                                    <img src="../assets/shoping_icon.png"  alt="delevery icon">
+                                </div>
+                                <div class="rigthPart">
+                                    <h3>Best Prices and Offers</h3>
+                                    <p>Enjoy the best prices and exclusive offers.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item">
+                                <div class="leftPart">
+                                    <img src="../assets/assortment_icon.png"  alt="delevery icon">
+                                </div>
+                                <div class="rigthPart">
+                                    <h3>Wide Assortment</h3>
+                                    <p>Choose from a wide range of products.</p>
+                                </div>
+                            </div>
+                        </li>
+        
+                    </ul>
+                </div>
+               
+            </div>
         </div>
+        <button (click)="goBack()" class="btnBack">Back To Home</button>
         <div *ngIf="!product" class="loading">
             <p>Loading...</p>
         </div>
     </div>
 </div>
-

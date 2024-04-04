@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         },
         error: (error) => {
           console.error('Login failed:', error);
-          alert('Something went wrong\nplease check your id and password!')
+          alert('Something went wrong!\nplease check your id and password ')
           this.isSubmitted = true;  // Consider marking form as submitted for UI feedback
         }
       });

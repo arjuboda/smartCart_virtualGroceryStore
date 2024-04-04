@@ -30,18 +30,20 @@ export class CheckOutComponent implements OnInit {
   totalPrice: number = 0;
   savedAmount: number = 0;
   grandTotal: number = 0;
+  tax_amount: number = 0;
   GSTPercentage: number = 18;
   modalOpen: boolean = false;
   customerName: string = "";
   shippingAddress: string = "";
   mobileNumber: string = "";
-  userId = localStorage.getItem('user_id'); // Assuming you store userId in localStorage
+  userId = localStorage.getItem('user_id');
 
   constructor(
     private router: Router,
     private cartService: CartService,
     private orderService: OrderService,
-    private userService: UserService) { }
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem('token')?.replace(/"/g, '');
@@ -86,6 +88,7 @@ export class CheckOutComponent implements OnInit {
     }, 0);
     this.savedAmount = 10; // Example saved amount, replace with your logic
     this.grandTotal = this.totalPrice + (this.totalPrice * (this.GSTPercentage / 100));
+    this.tax_amount = parseFloat((this.totalPrice * (this.GSTPercentage / 100)).toFixed(2));
   }
 
   openModal() {
@@ -116,9 +119,10 @@ export class CheckOutComponent implements OnInit {
 
     const orderData = {
       data: {
+        // order_id: '${userId}',
         order_status: 'Placed,',
         order_date: orderDate,
-        tax_amount: (this.totalPrice * (this.GSTPercentage / 100)),
+        tax_amount: this.tax_amount,
         total_amount: this.totalPrice,
         payable_amount: this.grandTotal,
         customer_name: this.customerName,
@@ -128,7 +132,8 @@ export class CheckOutComponent implements OnInit {
           product_name: item.attributes.product.data.attributes.product_name,
           quantity: item.attributes.quantity,
           price: item.attributes.product.data.attributes.price
-        }))
+        })),
+        user_detail: this.userId,
       }
     };
 
@@ -145,6 +150,3 @@ export class CheckOutComponent implements OnInit {
     });
   }
 }
-
-
-
