@@ -13,51 +13,63 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { authGuard } from './services/guard/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'logout',
-    component: LogoutComponent
+    component: LogoutComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'signup',
-    component: SignupComponent
+    component: SignupComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'product-list',
-    component: ProductListComponent
+    component: ProductListComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'product-view',
-    component: ProductViewComponent
+    component: ProductViewComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'product-view/:id',
-    component: ProductViewComponent
+    component: ProductViewComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'wishlist',
-    component: WishlistComponent
+    component: WishlistComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'cart',
-    component: CartComponent
+    component: CartComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    // canActivate: [authGuard]
   },
   {
     path: 'checkout',

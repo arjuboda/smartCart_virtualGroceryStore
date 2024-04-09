@@ -12,15 +12,18 @@ import { WishlistService } from 'src/app/services/wishlist.service';
 export class WishlistComponent {
 
   wishlistItems: any[] = [];
-  constructor(private wishlistService: WishlistService) { }
+  constructor(
+    private wishlistService: WishlistService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem('token')?.replace(/"/g, ''); // Use optional chaining
     if (token) {
       this.wishlistService.setAuthorizationHeader(token);
     } else {
-      console.error('No token found in local storage');
-      // Handle the case where no token is available (e.g., redirect to login)
+      alert('For wishlist details first do login!');
+      this.router.navigate(['/login'])
     }
     this.getWishlistProducts();
   }

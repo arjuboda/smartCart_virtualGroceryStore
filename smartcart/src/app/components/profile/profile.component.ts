@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.interface';
+import { Router } from '@angular/router';
 import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,12 @@ export class ProfileComponent implements OnInit {
   user: User = { id: 0, email: '', username: '', mobile_number: 0 };
   editMode: boolean = false;
   orders: any = [];
-  constructor(private userService: UserService, private orderService: OrderService) { }
+
+  constructor(
+    private userService: UserService,
+    private orderService: OrderService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem('token')?.replace(/"/g, ''); // Use optional chaining
@@ -20,7 +26,8 @@ export class ProfileComponent implements OnInit {
       this.userService.setAuthorizationHeader(token);
       this.orderService.setAuthorizationHeader(token);
     } else {
-      console.error('No token found in local storage');
+      alert('For profile details first do login!');
+      this.router.navigate(['/login'])
     }
     this.getUserData();
   }

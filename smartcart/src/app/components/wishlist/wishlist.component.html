@@ -13,7 +13,7 @@
             </div>
             <div class="product-price">
                 <p>Price: {{ item.attributes.product.data.attributes.price }}</p>
-                <button (click)="removeItem(i)">Remove</button>
+                <button (click)="removeItem(i)" class="btnremove">Remove</button>
             </div>
         </div>
       <button [routerLink]="['/home']" class="btnStartShopping">Back To Home</button>

@@ -52,7 +52,8 @@ export class CheckOutComponent implements OnInit {
       this.orderService.setAuthorizationHeader(token);
       this.userService.setAuthorizationHeader(token);
     } else {
-      console.error('No token found in local storage');
+      alert('For chekout details first do login!');
+      this.router.navigate(['/login']);
     }
     this.getCartProducts();
   }
