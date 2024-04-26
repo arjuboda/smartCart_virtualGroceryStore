@@ -15,10 +15,19 @@ export class ProductViewComponent implements OnInit {
   product: any = {};
   quantity: number = 1;
 
-  constructor(private route: ActivatedRoute, private router: Router,
+  addToCartClicked: boolean = false;
+  addToWishlistClicked: boolean = false;
+  isInCart: boolean = false;
+  isInWishlist: boolean = false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private productService: ProductService,
     private cartService: CartService,
-    private wishlistService: WishlistService, private location: Location,) { }
+    private wishlistService: WishlistService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem('token')?.replace(/"/g, ''); // Use optional chaining
@@ -31,9 +40,11 @@ export class ProductViewComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.productId = +params['id'];
 
-      // Fetch the product details based on the ID
       this.getProductById(this.productId);
     });
+    this.checkIfInCart();
+    this.checkIfInWhishlist();
+
   }
 
   getProductById(id: number) {
@@ -47,8 +58,19 @@ export class ProductViewComponent implements OnInit {
       }
     );
   }
-
+  checkIfInWhishlist() {
+    const productId: number = this.productId;
+    console.log(productId)
+    this.isInWishlist = this.wishlistService.wishlistProductIds.includes(productId);
+    console.log("cartid:", this.wishlistService.wishlistProductIds);
+    console.log(this.isInWishlist)
+  }
   addToWishlist(): void {
+    if (this.isInWishlist) {
+      alert('Product is already in the cart.');
+      return; // Exit function if product is already in the cart
+    }
+
     const isAuthenticated = (localStorage.getItem('user_id')) !== null;
     if (!isAuthenticated) {
       alert('Please login first.');
@@ -64,23 +86,37 @@ export class ProductViewComponent implements OnInit {
 
     this.wishlistService.addWishlist(wishlistItemPayload).subscribe(
       () => {
+        // Add the newly added product ID to cartProductIds
+        this.wishlistService.wishlistProductIds.push(this.productId);
         alert('Product added to Favourite successfully!');
+        this.isInWishlist = true; // Update isInCart flag
       },
       error => {
         console.error('Error adding product to wishlist:', error);
       }
     );
+    this.addToWishlistClicked = true;
+
   }
 
-
+  checkIfInCart() {
+    const productId: number = this.productId;
+    console.log(productId)
+    this.isInCart = this.cartService.cartProductIds.includes(productId);
+    console.log("cartid:", this.cartService.cartProductIds);
+    console.log(this.isInCart)
+  }
   addToCart(quantity: number): void {
+    if (this.isInCart) {
+      alert('Product is already in the cart.');
+      return; // Exit function if product is already in the cart
+    }
     //check user login or not
     const isAuthenticated = localStorage.getItem('user_id') !== null;
     if (!isAuthenticated) {
       alert('Please login first.');
       this.router.navigate(['/login']);
     }
-    // console.log(this.productId);
 
     const cartItemPayload = {
       data: {
@@ -92,8 +128,12 @@ export class ProductViewComponent implements OnInit {
 
     this.cartService.addCart(cartItemPayload).subscribe(
       () => {
-
+        // Add the newly added product ID to cartProductIds
+        this.cartService.cartProductIds.push(this.productId);
+        // console.log("id added in cart", this.cartService.cartProductIds);
+        this.isInCart = true; // Update isInCart flag
         alert('Product added to cart successfully!');
+
       },
       error => {
         console.error('Error adding product to cart:', error);

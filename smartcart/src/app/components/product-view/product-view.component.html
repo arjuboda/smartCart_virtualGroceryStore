@@ -25,8 +25,11 @@
                         <input type="number" [(ngModel)]="quantity" value="1" min="1">
                     </div>
                     <div class="buttons">
-                        <button (click)="addToCart(quantity)" class="btn-cart">Add to Cart</button>
-                        <button (click)="addToWishlist()" class="btn-wishlist">Add to Wishlist</button>
+                        <button (click)="addToCart(quantity)" [disabled]="addToCartClicked || isInCart" [ngClass]="{ 'btn-cart': !isInCart, 'btn-cart-disabled': isInCart }">Add to Cart</button>
+                        <button (click)="addToWishlist()" [disabled]="addToWishlistClicked || isInWishlist" [ngClass]="{ 'btn-wishlist': !isInWishlist, 'btn-wishlist-disabled': isInWishlist }">Add to Wishlist</button>
+
+                        <!-- <button (click)="addToCart(quantity)" class="btn-cart">Add to Cart</button> -->
+                        <!-- <button (click)="addToWishlist()" class="btn-wishlist">Add to Wishlist</button> -->
                     </div>
                 </div>
                 <div class="why-choose-this">

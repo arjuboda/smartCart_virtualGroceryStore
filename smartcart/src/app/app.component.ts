@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,16 +7,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'smartcart';
-  // navs = [
-  //   {
-  //     name: 'Login',
-  //     path: 'login'
-  //   },
-  //   {
-  //     name: 'Home',
-  //     path: 'home'
-  //   },
-  // ];
-  // constructor(private router: Router) { }
+
 }
 ;

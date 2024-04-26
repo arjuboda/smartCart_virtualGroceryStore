@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class HomeComponent implements OnInit {
   products: any[] = [];
-  filteredProducts: any[] = []; // Add a new array for filtered products
+  filteredProducts: any[] = []; // array for filtered products
   searchQuery: string = ''; // Variable to hold search query
   selectedCategory: string = ''; // Variable to hold selected category
   categories: string[] = []; // Array to hold unique categories
@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
   }
 
   searchProducts() {
-    console.log(this.searchQuery);
-    console.log(this.filteredProducts);
+    // console.log(this.searchQuery);
+    // console.log(this.filteredProducts);
     if (!this.searchQuery) {
       this.filteredProducts = this.products; // If search query is empty, display all products
     } else {
@@ -53,10 +53,16 @@ export class HomeComponent implements OnInit {
         product.attributes.product_name.toLowerCase().includes
           (this.searchQuery.toLowerCase()) || product.attributes.category.data.attributes.category_name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
-
+      // Apply category filter if selected
+      if (this.selectedCategory) {
+        this.filteredProducts = this.filteredProducts.filter(product =>
+          product.attributes.category.data.attributes.category_name.toLowerCase() === this.selectedCategory.toLowerCase()
+        );
+      }
       if (this.filteredProducts.length < 1) {
         alert('products not found!');
         this.filteredProducts = this.products;
+        this.searchQuery = '';
       }
     }
     if (this.selectedCategory) {

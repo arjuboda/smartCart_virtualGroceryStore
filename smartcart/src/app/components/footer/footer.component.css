@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
     background-color: #17819a;
     padding: 30px 0;
     color: #fff;
@@ -20,12 +20,6 @@
     margin: auto;
 }
 
-/* .col-md-4 {
-     display: ;
-    display: inline-block;
-    width: 30%; 
-}
-*/
 .footer ul {
     list-style: none;
     padding: 0;
@@ -56,7 +50,6 @@ i:hover {
 
 .social-icons li {
     display: inline-block;
-    /* margin-right: 10px; */
 }
 
 .social-icons li:last-child {
@@ -77,4 +70,87 @@ h5,
 p,
 li {
     text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+    .footer .col-md-4 {
+        flex: 0 0 calc(33.333% - 20px);
+        max-width: calc(33.333% - 20px);
+        margin-bottom: 0;
+    }
+} */
+
+.footer {
+    background-color: #17819a;
+    padding: 30px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.footer h5 {
+    font-size: 18px;
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+.footer .container {
+    width: 60%;
+    margin: auto;
+}
+
+.footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Center columns horizontally */
+}
+
+.footer .col-md-4 {
+    flex: 0 0 100%;
+    /* Each column takes full width on small screens */
+    max-width: 100%;
+    margin-bottom: 0px;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons li:last-child {
+    margin-right: 0;
+}
+
+.social-icons a {
+    font-size: 20px;
+}
+
+ul li a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .footer .col-md-4 {
+        flex: 0 0 calc(33.333% - 20px);
+        max-width: calc(33.333% - 20px);
+    }
 }
